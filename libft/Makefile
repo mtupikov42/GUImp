@@ -29,6 +29,7 @@ SRC =   ft_atoi.c ft_bzero.c ft_isalnum.c \
         utils.c parse_opt.c print_nbr.c \
         print_wchar.c itoa_utils.c print_wstr.c \
         split_utils.c ft_strisdigit.c ft_atof.c \
+        t_vector_logic.c \
 
 CC	= clang
 
@@ -52,7 +53,7 @@ $(OBJ_DIR)/%.o : %.c
 	@$(CC) $(FLG) -I$(INCLUDES) -c -o $@ $<
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@rm -rf $(NAME)

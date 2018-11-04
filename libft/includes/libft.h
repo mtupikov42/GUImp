@@ -20,6 +20,13 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct		s_vector
+{
+	void			**array;
+	size_t 			capacity;
+	size_t 			size;
+}					t_vector;
+
 int					ft_strsplit_count(char **split);
 int					ft_split_has_dupl(char **split);
 int					ft_strcmp(const char *str1, const char *str2);
@@ -99,5 +106,8 @@ size_t				ft_lstcount(t_list *lst);
 size_t				ft_strlcat(char *dest, const char *from, size_t size);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+void				vector_push_back(t_vector *vector, void *data);
+void				*vector_get_at(t_vector *vector, size_t index);
 
 #endif
