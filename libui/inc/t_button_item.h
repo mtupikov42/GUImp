@@ -8,6 +8,7 @@
 # include <SDL.h>
 # include <stdbool.h>
 # include "e_items.h"
+# include "t_sdl_events.h"
 
 /*
 **	STRUCTS
@@ -18,6 +19,8 @@
 ** properties -> SDL struct with x, y, width, height
 */
 
+typedef struct	s_button t_button;
+
 typedef struct	s_button
 {
 	int			type;
@@ -27,6 +30,9 @@ typedef struct	s_button
 	SDL_Surface	*surface_idle;
 	SDL_Surface	*surface_hovered;
 	SDL_Surface	*surface_pressed;
+	void		(*event_handler)(t_sdl_events *, t_button *);
+	void		(*on_click)(void *);
+	void 		*parent;
 }				t_button;
 
 typedef struct	s_button_info
@@ -35,6 +41,9 @@ typedef struct	s_button_info
 	SDL_Surface	*surface_idle;
 	SDL_Surface	*surface_hovered;
 	SDL_Surface	*surface_pressed;
+	void		(*event_handler)(t_sdl_events *, t_button *);
+	void		(*on_click)(void *);
+	void 		*parent;
 }				t_button_info;
 
 #endif
