@@ -45,7 +45,7 @@ CC = clang
 FLG = -O3 -Werror -Wextra -Wall -I$(LIB_PATH)includes
 
 ifeq ($(OS), Linux)
-	FRAMEWORKS	:=	`pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm -lOpenCL
+	FRAMEWORKS	:=	`pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lOpenCL
 else
 	INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
 					-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
