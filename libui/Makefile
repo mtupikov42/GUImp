@@ -1,5 +1,7 @@
 NAME = libui.a
 
+OS = $(shell uname)
+
 # <=== LIBS ===>
 
 LIBFT_NAME = libft.a
@@ -42,12 +44,16 @@ CC = clang
 
 FLG = -O3 -Werror -Wextra -Wall -I$(LIB_PATH)includes
 
-INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
-				-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
-				-I../frameworks/SDL2_image.framework/Versions/A/Headers \
-				-I../frameworks/SDL2_mixer.framework/Headers \
-				-I../frameworks/SDL2_net.framework/Headers \
-				-F../frameworks
+ifeq ($(OS), Linux)
+	FRAMEWORKS	=	`sdl2-config --cflags --libs` -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm -lOpenCL
+else
+	INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
+					-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
+					-I../frameworks/SDL2_image.framework/Versions/A/Headers \
+					-I../frameworks/SDL2_mixer.framework/Headers \
+					-I../frameworks/SDL2_net.framework/Headers \
+					-F../frameworks
+endif
 
 # <=== RULES ===>
 
