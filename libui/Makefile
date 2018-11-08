@@ -40,21 +40,20 @@ OBJ_SRC_UTILS = $(addprefix $(OBJ_DIR)/, $(SRC_UTILS:.c=.o))
 
 # <=== COMPILER ===>
 
-CC = clang
+CC = gcc
 
 FLG = -O3 -Werror -Wextra -Wall -I$(LIB_PATH)includes
 
 ifeq ($(OS), Linux)
 	FRAMEWORKS	:=	`pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm -lOpenCL
+else
+	INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
+					-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
+					-I../frameworks/SDL2_image.framework/Versions/A/Headers \
+					-I../frameworks/SDL2_mixer.framework/Headers \
+					-I../frameworks/SDL2_net.framework/Headers \
+					-F../frameworks
 endif
-
-INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
-				-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
-				-I../frameworks/SDL2_image.framework/Versions/A/Headers \
-				-I../frameworks/SDL2_mixer.framework/Headers \
-				-I../frameworks/SDL2_net.framework/Headers \
-				-F../frameworks
-
 
 # <=== RULES ===>
 
