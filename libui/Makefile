@@ -1,5 +1,7 @@
 NAME = libui.a
 
+OS = $(shell uname)
+
 # <=== LIBS ===>
 
 LIBFT_NAME = libft.a
@@ -42,12 +44,16 @@ CC = clang
 
 FLG = -O3 -Werror -Wextra -Wall -I$(LIB_PATH)includes
 
-INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
+ifeq ($(OS), Linux)
+	FRAMEWORKS	=	`pkg-config --cflags --libs sdl2` -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm -lOpenCL
+else
+	INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
 					-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
 					-I../frameworks/SDL2_image.framework/Versions/A/Headers \
 					-I../frameworks/SDL2_mixer.framework/Headers \
 					-I../frameworks/SDL2_net.framework/Headers \
 					-F../frameworks
+endif
 
 # <=== RULES ===>
 
@@ -62,16 +68,16 @@ $(NAME): $(OBJ_SRC_WINDOWS) $(OBJ_SRC_EVENTS) $(OBJ_SRC_ITEMS) $(OBJ_SRC_UTILS)
 
 $(OBJ_DIR)/%.o : $(SRC_WINDOWS_PATH)%.c
 	@/bin/mkdir -p $(OBJ_DIR)
-	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
+	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) $(FRAMEWORKS) -c -o $@ $<
 
 $(OBJ_DIR)/%.o : $(SRC_EVENTS_PATH)%.c
-	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
+	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) $(FRAMEWORKS) -c -o $@ $<
 
 $(OBJ_DIR)/%.o : $(SRC_ITEMS_PATH)%.c
-	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
+	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) $(FRAMEWORKS) -c -o $@ $<
 
 $(OBJ_DIR)/%.o : $(SRC_UTILS_PATH)%.c
-	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
+	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) $(FRAMEWORKS) -c -o $@ $<
 
 clean:
 	@rm -rf $(OBJ_DIR)
