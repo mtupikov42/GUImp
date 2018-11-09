@@ -1,6 +1,6 @@
 #include "guimp.h"
 
-int		main(int argc, char **argv)
+int		main(int argc, char **argv) // TODO font loading from res dir
 {
 	t_sdl sdl;
 
@@ -11,14 +11,9 @@ int		main(int argc, char **argv)
 
 	push_back_new_window_to_vector(&sdl.windows, create_empty_window(
 			(t_window_info) {
-					"Check 1", true, 100, 900, SDL_WINDOWPOS_UNDEFINED,
-					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOW_RESIZABLE, NULL
-			}));
-
-	push_back_new_window_to_vector(&sdl.windows, create_empty_window(
-			(t_window_info) {
-					"Check 2", false, 900, 100, SDL_WINDOWPOS_UNDEFINED,
-					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOW_RESIZABLE, NULL
+					"GUIMP", true, 500, 800, SDL_WINDOWPOS_UNDEFINED,
+					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOW_RESIZABLE, NULL,
+					&sdl.fonts
 			}));
 
 	main_loop(&sdl);

@@ -19,6 +19,7 @@
 ** is_main -> if true, then when we close window application shuts down.
 ** id -> identifier of window.
 ** event_handler -> function in which events of this window are handled.
+** fonts -> vector of available fonts.
 */
 
 typedef struct  	s_window t_window;
@@ -32,6 +33,7 @@ struct				s_window
 	t_vector		items;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
+	t_vector		*fonts;
 };
 
 /*
@@ -42,6 +44,7 @@ struct				s_window
 ** x, y -> starting positions of window.
 ** flags -> flags such as 'resizable', 'shown', etc.
 ** event_handler -> as above.
+** fonts -> as above.
 */
 
 typedef struct		s_window_info
@@ -54,6 +57,7 @@ typedef struct		s_window_info
 	int 			y;
 	Uint32 			flags;
 	void			(*event_handler)(t_sdl_events *, t_window *);
+	t_vector		*fonts;
 }					t_window_info;
 
 #endif

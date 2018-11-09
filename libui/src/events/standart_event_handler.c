@@ -1,7 +1,6 @@
-#include "t_sdl_events.h"
-#include "t_window.h"
+#include "libui.h"
 
-void	standart_key_event_handler(t_sdl_events *events, t_window *window)
+static void	standart_key_event_handler(t_sdl_events *events, t_window *window)
 {
 	if (events->event.type == SDL_KEYDOWN &&
 		events->event.window.windowID == window->id)
@@ -15,7 +14,22 @@ void	standart_key_event_handler(t_sdl_events *events, t_window *window)
 	}
 }
 
-void	standart_window_event_handler(t_sdl_events *events, t_window *window)
+static void	standart_items_event_handler(t_sdl_events *events, t_window *window)
+{
+	size_t i;
+	t_item *item;
+
+	i = 0;
+	while (i < window->items.size)
+	{
+		item = ITEM_AT(i);
+		if (item->type == BUTTON)
+			BUTTON_AT(i)->event_handler(events, window, BUTTON_AT(i));
+		i += 1;
+	}
+}
+
+static void	standart_window_event_handler(t_sdl_events *events, t_window *window)
 {
 	if (events->event.type == SDL_WINDOWEVENT &&
 		events->event.window.windowID == window->id)
@@ -37,4 +51,5 @@ void	standart_event_handler(t_sdl_events *events, t_window *window)
 {
 	standart_window_event_handler(events, window);
 	standart_key_event_handler(events, window);
+	standart_items_event_handler(events, window);
 }

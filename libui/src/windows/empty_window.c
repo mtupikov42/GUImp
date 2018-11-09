@@ -4,6 +4,7 @@ t_window *create_empty_window(t_window_info info)
 {
 	t_window *window;
 
+	G_ASSERT_TEXT(info.fonts, NULL, "fonts vector must not be null.")
 	if (!(window = malloc(sizeof(t_window))))
 		return NULL;
 	window->window = SDL_CreateWindow(
@@ -20,5 +21,6 @@ t_window *create_empty_window(t_window_info info)
 	window->surface = SDL_GetWindowSurface(window->window);
 	window->event_handler =	!info.event_handler	? &standart_event_handler
 												: info.event_handler;
+	window->fonts = info.fonts;
 	return (window);
 }

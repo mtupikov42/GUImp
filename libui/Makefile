@@ -21,6 +21,7 @@ LIB_PATH = ../libft/
 SRC_WINDOWS =   empty_window.c \
 
 SRC_EVENTS =    standart_event_handler.c \
+                standart_button_event_handler.c \
 
 SRC_ITEMS =     button.c \
 

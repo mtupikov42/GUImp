@@ -7,16 +7,11 @@
 
 # include "libft.h"
 # include "libui.h"
-#include <SDL_image.h>
+# include <SDL_image.h>
 
 /*
 **	DEFINES
 */
-
-# define UNUSED(x) (x == x);
-# define WINDOW_AT(i) ((t_window *)vector_get_at(&sdl->windows, i))
-# define ITEM_AT(i) ((t_item *)vector_get_at(&window->items, i))
-# define BUTTON_AT(i) ((t_button *)vector_get_at(&window->items, i))
 
 /*
 **	STRUCTS
@@ -26,6 +21,7 @@ typedef struct		s_sdl
 {
 	t_sdl_events	events;
 	t_vector		windows;
+	t_vector		fonts;
 }					t_sdl;
 
 /*
