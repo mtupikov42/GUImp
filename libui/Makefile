@@ -24,6 +24,7 @@ SRC_EVENTS =    standart_event_handler.c \
                 standart_button_event_handler.c \
 
 SRC_ITEMS =     button.c \
+                text_area.c \
 
 SRC_UTILS =     g_assert.c \
 

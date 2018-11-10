@@ -11,10 +11,8 @@ void	initialize_t_sdl(t_sdl *sdl)
 
 void	initialize_sdl()
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-		error((char *)SDL_GetError());
-	if (IMG_Init(IMG_INIT_PNG) < 0)
-		error((char *)SDL_GetError());
-	if (TTF_Init() < 0)
-		error((char *)SDL_GetError());
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0 ||
+		IMG_Init(IMG_INIT_PNG) < 0 ||
+		TTF_Init() < 0)
+		SDL_ERROR
 }

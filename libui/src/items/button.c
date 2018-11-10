@@ -1,13 +1,12 @@
-#include <ft_printf.h>
 #include "libui.h"
 
 t_button *create_button(t_button_info info)
 {
-	G_ASSERT_TEXT(info.parent, NULL, "button parent cannot be null.")
-	G_ASSERT_TEXT(info.on_click, NULL, "button on_click func cannot be null.")
-	G_ASSERT_TEXT(info.font_data.text, NULL, "button text cannot be null.")
-	G_ASSERT_TEXT(info.on_click_info, NULL, "btn on_click data cannot be null.")
-	G_ASSERT_TEXT(info.font_data.name, NULL, "button must have font to show text.")
+	G_ASSERT_TEXT(info.parent == NULL, "button parent cannot be null.")
+	G_ASSERT_TEXT(info.on_click == NULL, "button on_click func cannot be null.")
+	G_ASSERT_TEXT(info.font_data.text == NULL, "button text cannot be null.")
+	G_ASSERT_TEXT(info.on_click_info == NULL, "btn on_click data cannot be null.")
+	G_ASSERT_TEXT(info.font_data.name == NULL, "button must have font to show text.")
 	t_button *button = malloc(sizeof(t_button));
 	button->is_hovered = false;
 	button->is_pressed = false;

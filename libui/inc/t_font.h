@@ -21,7 +21,7 @@ typedef struct	s_font_data
 typedef struct	s_font_render
 {
 	t_font		*font;
-	t_font_data	data;
+	t_font_data	*data;
 	SDL_Surface	*dest_surface;
 	SDL_Rect	font_pos;
 }				t_font_render;

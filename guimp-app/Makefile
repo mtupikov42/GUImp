@@ -11,19 +11,29 @@ LIBUI_NAME = libui.a
 
 SRC_PATH = ./src/
 SRC_UTILS_PATH = ./src/utilities/
+SRC_FONTS_PATH = ./src/fonts/
+SRC_RENDER_PATH = ./src/render/
 INC_PATH = ./inc/
 LIB_PATH = ../libft/
 LIBUI_PATH = ../libui/
 
 # <=== SOURCES ===>
 
-SRC =       main.c \
-            main_loop.c \
-            main_loop_events.c \
+SRC =           main.c \
+                main_loop.c \
+                main_loop_events.c \
 
-SRC_UTILS = vector_utilities.c \
-            general_utilities.c \
-            initialization_utilities.c \
+SRC_UTILS =     vector_utilities.c \
+                general_utilities.c \
+                initialization_utilities.c \
+
+SRC_FONTS =     fonts.c \
+
+SRC_RENDER =    render.c \
+                render_button.c \
+                render_font.c \
+                render_text_area.c \
+                render_window.c \
 
 # <=== OBJ ===>
 
@@ -32,6 +42,10 @@ OBJ_DIR = obj
 OBJ_SRC = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 OBJ_SRC_UTILS = $(addprefix $(OBJ_DIR)/, $(SRC_UTILS:.c=.o))
+
+OBJ_SRC_FONTS = $(addprefix $(OBJ_DIR)/, $(SRC_FONTS:.c=.o))
+
+OBJ_SRC_RENDER = $(addprefix $(OBJ_DIR)/, $(SRC_RENDER:.c=.o))
 
 # <=== COMPILER ===>
 
@@ -60,10 +74,11 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ_SRC) $(OBJ_SRC_UTILS)
+$(NAME): $(OBJ_SRC) $(OBJ_SRC_UTILS) $(OBJ_SRC_FONTS) $(OBJ_SRC_RENDER)
 	@make -C $(LIB_PATH)
 	@make -C $(LIBUI_PATH)
-	@$(CC) $(FLG) $(CGFLAGS) $(FRAMEWORKS) -g $(LIB_PATH)$(LIBFT_NAME) -g $(LIBUI_PATH)$(LIBUI_NAME) $(OBJ_SRC) $(OBJ_SRC_UTILS) -o $(NAME)
+	@$(CC) $(FLG) $(CGFLAGS) $(FRAMEWORKS) -g $(LIB_PATH)$(LIBFT_NAME) -g $(LIBUI_PATH)$(LIBUI_NAME) \
+	$(OBJ_SRC) $(OBJ_SRC_UTILS) $(OBJ_SRC_FONTS) $(OBJ_SRC_RENDER) -o $(NAME)
 	@echo "GUImp ✅"
 
 $(OBJ_DIR)/%.o : $(SRC_PATH)%.c
@@ -71,6 +86,12 @@ $(OBJ_DIR)/%.o : $(SRC_PATH)%.c
 	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
 
 $(OBJ_DIR)/%.o : $(SRC_UTILS_PATH)%.c
+	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
+
+$(OBJ_DIR)/%.o : $(SRC_FONTS_PATH)%.c
+	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
+
+$(OBJ_DIR)/%.o : $(SRC_RENDER_PATH)%.c
 	@$(CC) $(FLG) -c -I$(INC_PATH) -c $(INCLUDES) -c -o $@ $<
 
 clean:

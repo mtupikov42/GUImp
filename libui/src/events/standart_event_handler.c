@@ -44,6 +44,9 @@ static void	standart_window_event_handler(t_sdl_events *events, t_window *window
 			window->is_shown = false;
 		else if (events->event.window.event == SDL_WINDOWEVENT_SHOWN)
 			window->is_shown = true;
+		else if (events->event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED
+				|| events->event.window.event == SDL_WINDOWEVENT_RESIZED)
+			window->surface = SDL_GetWindowSurface(window->window);
 	}
 }
 

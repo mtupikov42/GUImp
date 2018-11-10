@@ -10,7 +10,7 @@
 # include "e_items.h"
 # include "t_sdl_events.h"
 # include "t_window.h"
-#include "t_font.h"
+# include "t_font.h"
 
 /*
 **	DEFINES

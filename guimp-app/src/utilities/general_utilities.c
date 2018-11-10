@@ -1,8 +1,11 @@
-#include "guimp.h"
+#include <dirent.h>
 
-void	error(char *reason)
+int		count_elements_in_dir(DIR *dir)
 {
-	ft_printf("%s\n", reason);
-	SDL_Quit();
-	exit(2);
+	int	ret;
+
+	ret = 0;
+	while (readdir(dir))
+		ret++;
+	return (ret);
 }
