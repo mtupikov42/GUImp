@@ -11,11 +11,10 @@ void	render_window(t_window *window)
 	{
 		item = ITEM_AT(i);
 		if (item->type == BUTTON)
-			render_button(window, BUTTON_AT(i));
+			render_button(BUTTON_AT(i));
 		else if (item->type == TEXT_AREA)
-			render_text_area(window, TEXT_AREA_AT(i));
+			render_text_area(TEXT_AREA_AT(i));
 		i += 1;
 	}
 	SDL_UpdateWindowSurface(window->window);
 }
-

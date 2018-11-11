@@ -24,7 +24,7 @@ static void	standart_items_event_handler(t_sdl_events *events, t_window *window)
 	{
 		item = ITEM_AT(i);
 		if (item->type == BUTTON)
-			BUTTON_AT(i)->event_handler(events, window, BUTTON_AT(i));
+			BUTTON_AT(i)->event_handler(events, BUTTON_AT(i));
 		i += 1;
 	}
 }

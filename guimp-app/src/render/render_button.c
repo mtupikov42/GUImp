@@ -1,7 +1,10 @@
 #include "guimp.h"
 
-void	render_button(t_window *window, t_button *button)
+void	render_button(t_button *button)
 {
+	t_window *window;
+
+	window = button->parent;
 	SDL_BlitScaled(
 			button->active_surface, NULL,
 			window->surface, &button->properties

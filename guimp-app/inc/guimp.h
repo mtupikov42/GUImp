@@ -51,7 +51,7 @@ void				render(t_sdl *sdl);
 **	render_button.c
 */
 
-void				render_button(t_window *window, t_button *button);
+void				render_button(t_button *button);
 
 /*
 **	render_font.c
@@ -69,7 +69,7 @@ void				render_window(t_window *window);
 **	render_text_area.c
 */
 
-void				render_text_area(t_window *window, t_text_area *area);
+void				render_text_area(t_text_area *area);
 
 /*
 **	fonts.c
@@ -92,6 +92,9 @@ void				push_back_new_window_to_vector(
 */
 
 int					count_elements_in_dir(DIR *dir);
+char 				*get_text_for_rect(
+						char *text, size_t width, size_t font_size
+					);
 
 /*
 **	initialization_utilities.c

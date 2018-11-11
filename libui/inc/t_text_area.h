@@ -32,6 +32,7 @@ typedef struct	s_text_area
 	SDL_Rect	properties;
 	SDL_Surface *active_surface;
 	t_font_data	font_data;
+	void		*parent;
 }				t_text_area;
 
 typedef struct	s_text_area_info
@@ -39,6 +40,7 @@ typedef struct	s_text_area_info
 	SDL_Rect	properties;
 	SDL_Surface *active_surface;
 	t_font_data	font_data;
+	void		*parent;
 }				t_text_area_info;
 
 #endif

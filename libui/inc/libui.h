@@ -57,7 +57,6 @@ void		standart_event_handler(t_sdl_events *events, t_window *window);
 
 void		standart_button_event_handler(
 				t_sdl_events *events,
-				t_window *window,
 				t_button *button
 			);
 

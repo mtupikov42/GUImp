@@ -22,7 +22,10 @@ static	void	standart_button_event_mouse_pressed(
 			if (events->event.type == SDL_MOUSEBUTTONDOWN)
 				button->active_surface = button->surface_pressed;
 			else if (events->event.type == SDL_MOUSEBUTTONUP)
+			{
+				button->active_surface = button->surface_hovered;
 				button->on_click(button->on_click_info);
+			}
 		}
 		else
 			button->active_surface = button->surface_idle;
@@ -54,10 +57,12 @@ static	void	standart_button_event_mouse_motion(
 
 void	standart_button_event_handler(
 			t_sdl_events *events,
-			t_window *window,
 			t_button *button
 		)
 {
+	t_window	*window;
+
+	window = button->parent;
 	standart_button_event_mouse_pressed(events, window, button);
 	standart_button_event_mouse_motion(events, window, button);
 }

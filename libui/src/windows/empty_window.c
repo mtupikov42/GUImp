@@ -32,14 +32,13 @@ t_window *create_empty_window(t_window_info info)
 	vector_push_back(&window->items, create_button(
 			(t_button_info){
 					(SDL_Rect){
-						0, 300, 100, 70
-					},
-					NULL, NULL, NULL, NULL,
+						0, 300, 500, 30
+					}, NULL, NULL, NULL, NULL,
 					&on_click, window,
 					(t_font_data) {
 						"resources/fonts/BEBAS___.ttf",
-						"OH GOD",
-						17,
+						ft_strdup("You are ready to review your patronage"),
+						0,
 						(SDL_Color) {255, 0, 0, 255}
 					}, window
 			}
@@ -48,15 +47,14 @@ t_window *create_empty_window(t_window_info info)
 	vector_push_back(&window->items, create_text_area(
 			(t_text_area_info){
 					(SDL_Rect){
-							0, 0, 100, 200
-					},
-					NULL,
+							0, 0, 400, 70
+					}, NULL,
 					(t_font_data) {
 							"resources/fonts/BEBAS___.ttf",
-							"OH GOD",
-							18,
+							ft_strdup("You are ready to review your patronage"),
+							0,
 							(SDL_Color) {0, 255, 0, 0}
-					}
+					}, window
 			}
 	));
 

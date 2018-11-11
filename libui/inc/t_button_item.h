@@ -49,7 +49,7 @@ typedef struct	s_button
 	SDL_Surface	*surface_idle;
 	SDL_Surface	*surface_hovered;
 	SDL_Surface	*surface_pressed;
-	void		(*event_handler)(t_sdl_events *, t_window *, t_button *);
+	void		(*event_handler)(t_sdl_events *, t_button *);
 	void		(*on_click)(t_button *);
 	void 		*parent;
 	t_font_data	font_data;
@@ -62,7 +62,7 @@ typedef struct	s_button_info
 	SDL_Surface	*surface_idle;
 	SDL_Surface	*surface_hovered;
 	SDL_Surface	*surface_pressed;
-	void		(*event_handler)(t_sdl_events *, t_window *, t_button *);
+	void		(*event_handler)(t_sdl_events *, t_button *);
 	void		(*on_click)(t_button *);
 	void 		*parent;
 	t_font_data	font_data;
