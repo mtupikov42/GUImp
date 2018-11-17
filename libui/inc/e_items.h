@@ -5,6 +5,7 @@
 
 typedef enum	s_items
 {
+	WINDOW,
 	BUTTON,
 	MENU,
 	TEXT_AREA,

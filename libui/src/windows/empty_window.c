@@ -19,7 +19,8 @@ t_window *create_empty_window(t_window_info info)
 					);
 	if (!window->window)
 		return NULL;
-	window->is_shown = true;
+	window->type = WINDOW;
+	window->is_shown = info.is_shown;
 	window->items.size = 0;
 	window->items.capacity = 0;
 	window->is_main = info.is_main;
@@ -28,6 +29,8 @@ t_window *create_empty_window(t_window_info info)
 	window->event_handler =	!info.event_handler	? &standart_event_handler
 												: info.event_handler;
 	window->fonts = info.fonts;
+	window->parent = info.parent;
+	window->is_active = true;
 
 	vector_push_back(&window->items, create_button(
 			(t_button_info){

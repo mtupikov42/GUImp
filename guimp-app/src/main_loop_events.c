@@ -6,7 +6,7 @@ void	main_loop_events(t_sdl *sdl)
 
 	i = 0;
 	while (i < sdl->windows.size) {
-		WINDOW_AT(i)->event_handler(&sdl->events, WINDOW_AT(i));
+		WINDOW(i)->event_handler(&sdl->events, WINDOW(i));
 		i += 1;
 	}
 }

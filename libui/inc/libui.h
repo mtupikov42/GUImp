@@ -28,12 +28,13 @@
 **	VECTOR_UTILS_DEFINES
 */
 
-# define ITEM_AT(i) ((t_item *)vector_get_at(&window->items, i))
-# define WINDOW_AT(i) ((t_window *)vector_get_at(&sdl->windows, i))
-# define BUTTON_AT(i) ((t_button *)vector_get_at(&window->items, i))
-# define TEXT_AREA_AT(i) ((t_text_area *)vector_get_at(&window->items, i))
+# define ITEM_AT(i) ((t_item *)vector_get_at(&parent->items, i))
+# define WINDOW(i) ((t_window *)vector_get_at(&sdl->windows, i))
+# define WINDOW_AT(i) ((t_window *)vector_get_at(&parent->items, i))
+# define BUTTON_AT(i) ((t_button *)vector_get_at(&parent->items, i))
+# define TEXT_AREA_AT(i) ((t_text_area *)vector_get_at(&parent->items, i))
 
-# define FONT_AT(i) ((t_font *)vector_get_at(window->fonts, i))
+# define FONT_AT(i) ((t_font *)vector_get_at(parent->fonts, i))
 
 /*
 **	PROTOTYPES

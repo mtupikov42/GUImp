@@ -26,6 +26,7 @@ SRC =           main.c \
 SRC_UTILS =     vector_utilities.c \
                 general_utilities.c \
                 initialization_utilities.c \
+                parent_helpers.c \
 
 SRC_FONTS =     fonts.c \
 

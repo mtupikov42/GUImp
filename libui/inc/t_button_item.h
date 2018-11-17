@@ -42,6 +42,7 @@ typedef struct	s_button t_button;
 typedef struct	s_button
 {
 	int			type;
+	void 		*parent;
 	bool		is_hovered;
 	bool		is_pressed;
 	SDL_Rect	properties;
@@ -51,7 +52,6 @@ typedef struct	s_button
 	SDL_Surface	*surface_pressed;
 	void		(*event_handler)(t_sdl_events *, t_button *);
 	void		(*on_click)(t_button *);
-	void 		*parent;
 	t_font_data	font_data;
 	void		*on_click_info;
 }				t_button;

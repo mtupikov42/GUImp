@@ -92,9 +92,15 @@ void				push_back_new_window_to_vector(
 */
 
 int					count_elements_in_dir(DIR *dir);
-char 				*get_text_for_rect(
+char				*get_text_for_rect(
 						char *text, size_t width, size_t font_size
 					);
+
+/*
+**	parent_helpers.c
+*/
+
+t_window			*get_parent_window(void *item);
 
 /*
 **	initialization_utilities.c

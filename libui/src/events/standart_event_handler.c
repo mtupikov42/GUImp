@@ -14,17 +14,24 @@ static void	standart_key_event_handler(t_sdl_events *events, t_window *window)
 	}
 }
 
-static void	standart_items_event_handler(t_sdl_events *events, t_window *window)
+static void	standart_items_event_handler(t_sdl_events *events, t_window *parent)
 {
 	size_t i;
 	t_item *item;
 
 	i = 0;
-	while (i < window->items.size)
+	while (i < parent->items.size)
 	{
 		item = ITEM_AT(i);
-		if (item->type == BUTTON)
-			BUTTON_AT(i)->event_handler(events, BUTTON_AT(i));
+		if (parent->is_active) {
+			if (item->type == BUTTON)
+				BUTTON_AT(i)->event_handler(events, BUTTON_AT(i));
+		}
+		if (item->type == WINDOW)
+		{
+			parent->is_active = !WINDOW_AT(i)->is_shown;
+			WINDOW_AT(i)->event_handler(events, WINDOW_AT(i));
+		}
 		i += 1;
 	}
 }
@@ -37,6 +44,7 @@ static void	standart_window_event_handler(t_sdl_events *events, t_window *window
 		if (events->event.window.event == SDL_WINDOWEVENT_CLOSE)
 		{
 			SDL_HideWindow(window->window);
+			window->is_shown = false;
 			if (window->is_main)
 				events->quit = true;
 		}
@@ -52,7 +60,10 @@ static void	standart_window_event_handler(t_sdl_events *events, t_window *window
 
 void	standart_event_handler(t_sdl_events *events, t_window *window)
 {
-	standart_window_event_handler(events, window);
-	standart_key_event_handler(events, window);
+	if (window->is_active)
+	{
+		standart_window_event_handler(events, window);
+		standart_key_event_handler(events, window);
+	}
 	standart_items_event_handler(events, window);
 }

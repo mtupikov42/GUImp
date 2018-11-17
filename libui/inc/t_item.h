@@ -6,6 +6,7 @@
 typedef struct	s_item
 {
 	e_items		type;
+	void 		*parent;
 }				t_item;
 
 #endif

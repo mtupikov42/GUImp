@@ -2,15 +2,15 @@
 
 void	render_text_area(t_text_area *area)
 {
-	t_window *window;
+	t_window *parent;
 
-	window = area->parent;
+	parent = get_parent_window(area);
 	SDL_BlitScaled(
 			area->active_surface, NULL,
-			window->surface, &area->properties
+			parent->surface, &area->properties
 	);
-	render_font(window, (t_font_render){
-			NULL, &area->font_data, window->surface, area->properties
+	render_font(parent, (t_font_render){
+			NULL, &area->font_data, parent->surface, area->properties
 	});
 }
 

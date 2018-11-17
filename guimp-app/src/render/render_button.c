@@ -2,15 +2,14 @@
 
 void	render_button(t_button *button)
 {
-	t_window *window;
+	t_window *parent;
 
-	window = button->parent;
+	parent = get_parent_window(button);
 	SDL_BlitScaled(
 			button->active_surface, NULL,
-			window->surface, &button->properties
+			parent->surface, &button->properties
 	);
-	render_font(window, (t_font_render){
-		NULL, &button->font_data, window->surface, button->properties
+	render_font(parent, (t_font_render){
+		NULL, &button->font_data, parent->surface, button->properties
 	});
 }
-
